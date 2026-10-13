@@ -54,7 +54,10 @@ https://nativeretro.com/
   (Sandy and Ivy Bridge) run with translated instructions, best effort; processors without AVX
   (many Pentium and Celeron models) cannot run it
 - A graphics card with Vulkan 1.3 and a current driver
-- About 6 GB of free memory (RAM + page file), 10 GB for 1440p or 4K output
+- About 6 GB of free memory **commit** (RAM + page file), 10 GB for 1440p or 4K output. This
+  is reserved up front, so a small *fixed* page file fails here even on a PC that runs every
+  other game: see
+  [out of memory](docs/WINDOWS_TROUBLESHOOTING.md#out-of-memory-the-windows-commit-limit)
 - DLSS: NVIDIA GeForce RTX 20 series or newer
 
 Nothing else to install: everything the game needs is in the zip.
@@ -108,8 +111,9 @@ put its address in **Server address**.
 Ask on the [Discord server](https://discord.gg/yTMG8c4Bqm), or open an [issue](https://github.com/Supermedo/bloodborne_pc/issues) and attach
 `user\last_run.log` from the game folder, with your graphics card and what happened.
 If the game shows only a black screen, try **Advanced → Clear shader cache** first.
-Crashes on AMD RDNA2 cards, slow FSR 4 and online errors are collected in
-[docs/WINDOWS_TROUBLESHOOTING.md](docs/WINDOWS_TROUBLESHOOTING.md).
+Out-of-memory crashes (`error 1455`, `ErrorOutOfHostMemory`, `ErrorOutOfDeviceMemory`,
+`std::bad_alloc` — all one cause), crashes on AMD RDNA2 cards, slow FSR 4 and online errors
+are collected in [docs/WINDOWS_TROUBLESHOOTING.md](docs/WINDOWS_TROUBLESHOOTING.md).
 
 ## Building from source
 
